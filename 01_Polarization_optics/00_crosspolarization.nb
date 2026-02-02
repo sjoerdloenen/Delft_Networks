@@ -1,0 +1,1704 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     72996,       1696]
+NotebookOptionsPosition[     69307,       1626]
+NotebookOutlinePosition[     69700,       1642]
+CellTagsIndexPosition[     69657,       1639]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Definition of polarization elements", "Section",
+ CellChangeTimes->{{3.9702992801057673`*^9, 
+  3.9702992950862703`*^9}},ExpressionUUID->"3de39ec3-0ef4-4790-b447-\
+2a2d82428514"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DefectPol", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"InputPol", "[", "\[Theta]_", "]"}], " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Cos", "[", "\[Theta]", "]"}], ",", 
+     RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Polarizer", "[", "\[Theta]_", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], ",", 
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+        RowBox[{"Sin", "[", "\[Theta]", "]"}]}], ",", 
+       SuperscriptBox[
+        RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jqwp", "[", "\[Theta]_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", 
+      FractionBox["\[Pi]", "4"]}], "]"}], 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{"\[ImaginaryI]", " ", 
+          SuperscriptBox[
+           RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}], ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "\[ImaginaryI]"}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", "\[ImaginaryI]"}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{"\[ImaginaryI]", " ", 
+          SuperscriptBox[
+           RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"]}]}]}], "}"}]}], 
+     "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jhwp", "[", "\[Theta]_", "]"}], "=", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", 
+      FractionBox["\[Pi]", "2"]}], "]"}], 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"2", "\[Theta]"}], "]"}], ",", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"2", "\[Theta]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{"2", "\[Theta]"}], "]"}], ",", 
+        RowBox[{"-", 
+         RowBox[{"Cos", "[", 
+          RowBox[{"2", "\[Theta]"}], "]"}]}]}], "}"}]}], "}"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Jref", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jgen", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", 
+      FractionBox["\[Eta]", "2"]}], "]"}], 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{"Exp", "[", 
+           RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}], " ", 
+          SuperscriptBox[
+           RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}], ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"Exp", "[", 
+            RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}]}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"Exp", "[", 
+            RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}]}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{"Exp", "[", 
+           RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}], " ", 
+          SuperscriptBox[
+           RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"]}]}]}], "}"}]}], 
+     "}"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970297356409978*^9, 3.970297365348361*^9}, {
+   3.9702974037199697`*^9, 3.9702974662546377`*^9}, {3.970297524448914*^9, 
+   3.970297609923565*^9}, {3.970297642884763*^9, 3.970297735478795*^9}, {
+   3.970297975814006*^9, 3.970298006148767*^9}, {3.970298131663589*^9, 
+   3.970298132422737*^9}, {3.970298222879836*^9, 3.970298235808835*^9}, {
+   3.9702983257264233`*^9, 3.970298330586709*^9}, {3.970298367830574*^9, 
+   3.970298388919469*^9}, {3.97029846141358*^9, 3.970298542579734*^9}, {
+   3.97029891569938*^9, 3.9702989358438597`*^9}, {3.970300716944124*^9, 
+   3.970300757843172*^9}, {3.970301583492559*^9, 3.970301600549856*^9}, 
+   3.970302957428433*^9, {3.970634400319323*^9, 3.9706344028749523`*^9}, {
+   3.970804102903078*^9, 3.9708041130309963`*^9}, {3.970804160913686*^9, 
+   3.97080416204844*^9}},
+ CellLabel->"In[40]:=",ExpressionUUID->"f00f3842-8832-4c0d-95ec-bd947e2ea7e2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Definition of polarization through the \
+\[OpenCurlyQuote]Polarizer-HWP-QWP-Defect\[CloseCurlyQuote] system, taking \
+into account reflections. We define three polarizations:
+- Polarization of the excitation light at the defect
+- Polarization of the reflected excitation light just before the polarizer
+- Polarization of the emitted light by the defect just before the polarizer\
+\>", "Section",
+ CellChangeTimes->{{3.9702993002446747`*^9, 3.970299412954071*^9}, {
+  3.970804389153343*^9, 
+  3.970804393414263*^9}},ExpressionUUID->"e80e6496-e26d-495a-9e9c-\
+83b4eda401bb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExc", "[", 
+    RowBox[{"\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_"}], 
+    "]"}], " ", "=", 
+   RowBox[{
+    RowBox[{"Jqwp", "[", "\[Theta]qwp", "]"}], ".", 
+    RowBox[{"Jhwp", "[", "\[Theta]hwp", "]"}], ".", 
+    RowBox[{"InputPol", "[", "\[Theta]input", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExcRef", "[", 
+    RowBox[{"\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_"}], 
+    "]"}], " ", "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], ".", " ", "Jref", ".", " ", 
+    RowBox[{"PolExc", "[", 
+     RowBox[{"\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp"}], 
+     "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolEmi", "[", 
+    RowBox[{"\[Theta]hwp_", ",", "\[Theta]qwp_"}], "]"}], " ", "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], " ", ".", "Jref", ".", " ", 
+    "DefectPol"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970298385505439*^9, 3.970298413275775*^9}, {
+  3.970298632120223*^9, 3.970298868995019*^9}, {3.9702989722946997`*^9, 
+  3.970298974493485*^9}, {3.970299218249023*^9, 3.9702992346964073`*^9}, {
+  3.970299718607622*^9, 3.970299719723055*^9}, {3.970300153120397*^9, 
+  3.970300181577363*^9}, {3.970301974420189*^9, 3.970301979043145*^9}, {
+  3.970302522182332*^9, 3.9703025236807137`*^9}, {3.970302790311277*^9, 
+  3.9703027915721807`*^9}, {3.9703029613493557`*^9, 3.970302962316945*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"c8860a38-b6b9-46d4-a6d8-2bf397844948"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculate polarization overlap/projection of:
+- Excitation light at the defect position with the defect
+- Reflected excitation light at the polarizer with the polarizer
+- Emitted defect light at the polarizer with the polarizer
+We take the angle of the polarizer the same as the angle of the input \
+polarization (which makes sense)\
+\>", "Section",
+ CellChangeTimes->{{3.970299424138831*^9, 3.970299521415463*^9}, {
+  3.970299876673645*^9, 3.97029989850532*^9}, {3.970804378484951*^9, 
+  3.9708043810691566`*^9}},ExpressionUUID->"228cb947-f6ae-4ea7-bb21-\
+cac0ccaf8f06"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcDef", "[", 
+    RowBox[{"\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_"}], 
+    "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{"DefectPol", ".", 
+      RowBox[{"PolExc", "[", 
+       RowBox[{"\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp"}], 
+       "]"}]}], "]"}], "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcRefPol", "[", 
+    RowBox[{"\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_"}], 
+    "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolExcRef", "[", 
+       RowBox[{"\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp"}], 
+       "]"}]}], "]"}], "2"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjEmiPol", "[", 
+    RowBox[{"\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_"}], 
+    "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolEmi", "[", 
+       RowBox[{"\[Theta]hwp", ",", "\[Theta]qwp"}], "]"}]}], "]"}], "2"]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.970299523951239*^9, 3.97029952920584*^9}, {
+  3.970299600344474*^9, 3.97029967330335*^9}, {3.970299705376305*^9, 
+  3.970299749776194*^9}, {3.970299798879364*^9, 3.9702998001871977`*^9}, {
+  3.970299847641366*^9, 3.9702998701695232`*^9}, {3.970300047492362*^9, 
+  3.97030007843548*^9}, {3.9703001895787582`*^9, 3.970300195065648*^9}, {
+  3.970301708128212*^9, 3.970301767784985*^9}, {3.970301985121194*^9, 
+  3.970301990340048*^9}, {3.970304133166533*^9, 3.970304147963997*^9}, {
+  3.970804611331524*^9, 3.970804626150195*^9}, {3.9708046870092373`*^9, 
+  3.970804691950058*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"f5306c7f-1bcc-42f9-829c-89ff7c87e43b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ProjExcDef", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{"ProjExcRefPol", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "*", 
+        RowBox[{"ProjEmiPol", "[", 
+         RowBox[{
+          RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]qwp", "*", "\[Pi]"}]}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Theta]input", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<Excitation light at defect with defect\>\"", ",", 
+        "\"\<Reflected excitation light with polarizer\>\"", ",", 
+        "\"\<Emitted light with polarizer\>\""}], "}"}]}], ",", " ", 
+     RowBox[{"Frame", "->", " ", "True"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "500"}], ",", 
+     RowBox[{"FrameLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\[Theta]input (\[Pi])\>\"", ",", "\"\<polarization overlap\>\""}],
+        "}"}]}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]hwp", ",", "0", ",", "\"\<\[Theta]_hwp (\[Pi])\>\""}], 
+      "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]qwp", ",", "0", ",", "\"\<\[Theta]_qwp (\[Pi])\>\""}], 
+      "}"}], ",", "0", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.970300410675453*^9, 3.97030048524601*^9}, {
+   3.9703005473128633`*^9, 3.970300599167404*^9}, {3.970300784006344*^9, 
+   3.9703008299093018`*^9}, {3.970300956290574*^9, 3.970300997574828*^9}, {
+   3.970301033470392*^9, 3.970301056632102*^9}, {3.9703011028395233`*^9, 
+   3.970301114395645*^9}, {3.9703011933708477`*^9, 3.970301328406116*^9}, {
+   3.9703020174579697`*^9, 3.97030201855768*^9}, 3.970302119674342*^9, {
+   3.970302158120769*^9, 3.970302161548648*^9}, {3.9703021925058107`*^9, 
+   3.970302192632904*^9}, {3.970303266278575*^9, 3.970303272450577*^9}, {
+   3.9703033248944197`*^9, 3.9703033902592487`*^9}, {3.97080461624806*^9, 
+   3.970804629920073*^9}, {3.970804702634986*^9, 3.9708047054242983`*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"f48ee216-4ebf-4171-9e44-316ffbbcd34b"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Theta]hwp$$ = 
+    0, $CellContext`\[Theta]qwp$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Theta]hwp$$], 0, "\[Theta]_hwp (\[Pi])"}, 0, 1, 
+      ControlType -> Manipulator}, {{
+       Hold[$CellContext`\[Theta]qwp$$], 0, "\[Theta]_qwp (\[Pi])"}, 0, 1, 
+      ControlType -> Manipulator}}, Typeset`size$$ = {
+    762.9856445312499, {157.66701925722907`, 163.39895285097901`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Theta]hwp$$ = 
+        0, $CellContext`\[Theta]qwp$$ = 0}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> Plot[{
+         $CellContext`ProjExcDef[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ Pi], 
+         $CellContext`ProjExcRefPol[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+          Pi], -$CellContext`ProjEmiPol[$CellContext`\[Theta]input 
+           Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+           Pi]}, {$CellContext`\[Theta]input, 0, 1}, PlotRange -> {-1, 1}, 
+        PlotLegends -> {
+         "Excitation light at defect with defect", 
+          "Reflected excitation light with polarizer", 
+          "Emitted light with polarizer"}, Frame -> True, ImageSize -> 500, 
+        FrameLabel -> {"\[Theta]input (\[Pi])", "polarization overlap"}], 
+      "Specifications" :> {{{$CellContext`\[Theta]hwp$$, 0, 
+          "\[Theta]_hwp (\[Pi])"}, 0, 
+         1}, {{$CellContext`\[Theta]qwp$$, 0, "\[Theta]_qwp (\[Pi])"}, 0, 1}},
+       "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      806.0856445312498, {214.13744467226812`, 219.86937826601812`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.9703006000044394`*^9, 3.970300744298163*^9, {3.970300811712789*^9, 
+   3.970300830366921*^9}, 3.970301001483973*^9, {3.97030103576231*^9, 
+   3.970301057520013*^9}, {3.970301107234935*^9, 3.970301115198524*^9}, {
+   3.970301203260665*^9, 3.970301217836968*^9}, {3.970301258430225*^9, 
+   3.970301276966551*^9}, 3.970301328724165*^9, {3.9703014043574743`*^9, 
+   3.970301405979417*^9}, 3.970301834078685*^9, {3.970301992688499*^9, 
+   3.970302019594315*^9}, 3.970302193245571*^9, 3.970302966774341*^9, 
+   3.970303273738504*^9, {3.97030339073778*^9, 3.9703033957591047`*^9}, 
+   3.970304151152179*^9, 3.9706341399431887`*^9, 3.970634410472134*^9, 
+   3.970712225245783*^9, 3.970804330003742*^9, 3.970804709225211*^9, 
+   3.971491014190971*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"7887e3dc-1dd2-4e82-bdc8-421353016142"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Including arbitrary polarization rotations in the fiber
+
+Definition of polarization through the \
+\[OpenCurlyQuote]Polarizer-HWP-QWP-fiber-Defect\[CloseCurlyQuote] system, \
+taking into account reflections. We define three polarizations:
+- Polarization of the excitation light at the defect
+- Polarization of the reflected excitation light just before the polarizer
+- Polarization of the emitted light by the defect just before the polarizer\
+\>", "Section",
+ CellChangeTimes->{{3.9702993002446747`*^9, 3.970299412954071*^9}, {
+  3.970804337133073*^9, 
+  3.9708043714676847`*^9}},ExpressionUUID->"cd841bed-db01-460c-b1a8-\
+cf5ffebb9621"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExcFiber", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], " ", "=", 
+   RowBox[{
+    RowBox[{"Jgen", "[", 
+     RowBox[{"\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", "\[Theta]qwp", "]"}], ".", 
+    RowBox[{"Jhwp", "[", "\[Theta]hwp", "]"}], ".", 
+    RowBox[{"InputPol", "[", "\[Theta]input", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExcRefFiber", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], " ", "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], ".", " ", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]fiber"}], ",", "\[Eta]fiber"}], "]"}], ".", 
+    "Jref", ".", " ", 
+    RowBox[{"PolExcFiber", "[", 
+     RowBox[{
+     "\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp", ",", 
+      "\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolEmiFiber", "[", 
+    RowBox[{
+    "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", "\[Theta]fiber_", ",", 
+     "\[Eta]fiber_"}], "]"}], " ", "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], ".", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]fiber"}], ",", "\[Eta]fiber"}], "]"}], ".", 
+    "Jref", ".", " ", "DefectPol"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970298385505439*^9, 3.970298413275775*^9}, {
+   3.970298632120223*^9, 3.970298868995019*^9}, {3.9702989722946997`*^9, 
+   3.970298974493485*^9}, {3.970299218249023*^9, 3.9702992346964073`*^9}, {
+   3.970299718607622*^9, 3.970299719723055*^9}, {3.970300153120397*^9, 
+   3.970300181577363*^9}, {3.970301974420189*^9, 3.970301979043145*^9}, {
+   3.970302522182332*^9, 3.9703025236807137`*^9}, {3.970302790311277*^9, 
+   3.9703027915721807`*^9}, {3.9703029613493557`*^9, 3.970302962316945*^9}, {
+   3.9708044288164587`*^9, 3.970804450231865*^9}, {3.970804486062154*^9, 
+   3.9708045771723013`*^9}, 3.9708048108187523`*^9, {3.970806302875045*^9, 
+   3.970806303471677*^9}, {3.9708063992100067`*^9, 3.9708064025079947`*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"e4a698c1-32ce-4f78-a9ef-415495dd293c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculate polarization overlap/projection of:
+- Excitation light at the defect position with the defect
+- Reflected excitation light at the polarizer with the polarizer
+- Emitted defect light at the polarizer with the polarizer
+We take the angle of the polarizer the same as the angle of the input \
+polarization (which makes sense)\
+\>", "Section",
+ CellChangeTimes->{{3.970299424138831*^9, 3.970299521415463*^9}, {
+  3.970299876673645*^9, 
+  3.97029989850532*^9}},ExpressionUUID->"0bc1e110-a3c9-476d-961f-\
+8b565ea43eb7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcFiberDef", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{"DefectPol", ".", 
+      RowBox[{"PolExcFiber", "[", 
+       RowBox[{
+       "\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp", ",", 
+        "\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}]}], "]"}], "2"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcRefFiberPol", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolExcRefFiber", "[", 
+       RowBox[{
+       "\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp", ",", 
+        "\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}]}], "]"}], "2"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjEmiFiberDef", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolEmiFiber", "[", 
+       RowBox[{
+       "\[Theta]hwp", ",", "\[Theta]qwp", ",", "\[Theta]fiber", ",", 
+        "\[Eta]fiber"}], "]"}]}], "]"}], "2"]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970299523951239*^9, 3.97029952920584*^9}, {
+  3.970299600344474*^9, 3.97029967330335*^9}, {3.970299705376305*^9, 
+  3.970299749776194*^9}, {3.970299798879364*^9, 3.9702998001871977`*^9}, {
+  3.970299847641366*^9, 3.9702998701695232`*^9}, {3.970300047492362*^9, 
+  3.97030007843548*^9}, {3.9703001895787582`*^9, 3.970300195065648*^9}, {
+  3.970301708128212*^9, 3.970301767784985*^9}, {3.970301985121194*^9, 
+  3.970301990340048*^9}, {3.970304133166533*^9, 3.970304147963997*^9}, {
+  3.970804839741033*^9, 3.970804871998551*^9}, {3.9708049101434107`*^9, 
+  3.970804914968155*^9}, {3.970805022014434*^9, 3.9708050449110603`*^9}, {
+  3.970805078245871*^9, 3.970805086920087*^9}},
+ CellLabel->"In[57]:=",ExpressionUUID->"4fb62616-b052-4b38-882c-f0f0e3407a28"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"fontsize", " ", "=", " ", "20"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ProjExcFiberDef", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Eta]fiber", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{"ProjExcRefFiberPol", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Eta]fiber", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "*", 
+        RowBox[{"ProjExcFiberDef", "[", 
+         RowBox[{
+          RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Eta]fiber", "*", "\[Pi]"}]}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Theta]input", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(excite\)]\)\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(suppress\)]\)\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(emission\)]\)\>\""}], "}"}]}], 
+     ",", " ", 
+     RowBox[{"Frame", "->", " ", "True"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "500"}], ",", 
+     RowBox[{"FrameLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<\[Theta]input (\[Pi])\>\"", ",", 
+          RowBox[{"FontSize", "->", "fontsize"}]}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<polarization overlap\>\"", ",", 
+          RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}], ",", 
+     RowBox[{"TicksStyle", "->", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"FontSize", "->", "fontsize"}], "]"}]}], ",", 
+     RowBox[{"BaseStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]hwp", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_hwp (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]qwp", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_qwp (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]fiber", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_fiber (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Eta]fiber", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Eta]_fiber (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "2", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.970300410675453*^9, 3.97030048524601*^9}, {
+   3.9703005473128633`*^9, 3.970300599167404*^9}, {3.970300784006344*^9, 
+   3.9703008299093018`*^9}, {3.970300956290574*^9, 3.970300997574828*^9}, {
+   3.970301033470392*^9, 3.970301056632102*^9}, {3.9703011028395233`*^9, 
+   3.970301114395645*^9}, {3.9703011933708477`*^9, 3.970301328406116*^9}, {
+   3.9703020174579697`*^9, 3.97030201855768*^9}, 3.970302119674342*^9, {
+   3.970302158120769*^9, 3.970302161548648*^9}, {3.9703021925058107`*^9, 
+   3.970302192632904*^9}, {3.970303266278575*^9, 3.970303272450577*^9}, {
+   3.9703033248944197`*^9, 3.9703033902592487`*^9}, {3.970804877648794*^9, 
+   3.970804993575316*^9}, {3.970805108545026*^9, 3.970805185712862*^9}, {
+   3.970806362567272*^9, 3.9708063641475267`*^9}, {3.9708064203923388`*^9, 
+   3.9708064209310207`*^9}, {3.970906595440359*^9, 3.970906663867098*^9}, {
+   3.970907556367753*^9, 3.970907757258431*^9}, {3.970907866693132*^9, 
+   3.970907918746131*^9}, {3.970907975619152*^9, 3.970907995420631*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"68e39c6d-2acb-427e-b5f7-ed666b3a325e"],
+
+Cell[BoxData["20"], "Output",
+ CellChangeTimes->{
+  3.970805003772377*^9, {3.9708050614058447`*^9, 3.9708050899805183`*^9}, {
+   3.9708051773235693`*^9, 3.970805186735005*^9}, 3.9708052310399237`*^9, {
+   3.9708063476371393`*^9, 3.9708063650711403`*^9}, {3.970806416732662*^9, 
+   3.9708064216733503`*^9}, 3.970829297022272*^9, 3.970889153520586*^9, 
+   3.970906670869959*^9, {3.970907607641556*^9, 3.970907631955286*^9}, {
+   3.970907666919942*^9, 3.970907683880361*^9}, {3.9709077400030622`*^9, 
+   3.97090775777347*^9}, {3.970907874677916*^9, 3.9709079191905193`*^9}, {
+   3.970907977024849*^9, 3.970907997630328*^9}, 3.9714160890525303`*^9, 
+   3.971491020690528*^9},
+ CellLabel->"Out[60]=",ExpressionUUID->"1026d118-d306-4c2e-a85b-dda4fd65f99a"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Eta]fiber$$ = 
+    0, $CellContext`\[Theta]fiber$$ = 0, $CellContext`\[Theta]hwp$$ = 
+    0, $CellContext`\[Theta]qwp$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Theta]hwp$$], 0, 
+       Style["\[Theta]_hwp (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]qwp$$], 0, 
+       Style["\[Theta]_qwp (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]fiber$$], 0, 
+       Style["\[Theta]_fiber (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Eta]fiber$$], 0, 
+       Style["\[Eta]_fiber (\[Pi])", FontSize -> 20]}, 0, 2, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {
+    614.4802734374999, {160.40169325344618`, 166.13362684719613`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Eta]fiber$$ = 
+        0, $CellContext`\[Theta]fiber$$ = 0, $CellContext`\[Theta]hwp$$ = 
+        0, $CellContext`\[Theta]qwp$$ = 0}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> Plot[{
+         $CellContext`ProjExcFiberDef[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+          Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ Pi], 
+         $CellContext`ProjExcRefFiberPol[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+          Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ 
+          Pi], -$CellContext`ProjExcFiberDef[$CellContext`\[Theta]input 
+           Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+           Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ 
+           Pi]}, {$CellContext`\[Theta]input, 0, 1}, PlotRange -> {-1, 1}, 
+        PlotLegends -> {
+         "\!\(\*SubscriptBox[\(\[Nu]\), \(excite\)]\)", 
+          "\!\(\*SubscriptBox[\(\[Nu]\), \(suppress\)]\)", 
+          "\!\(\*SubscriptBox[\(\[Nu]\), \(emission\)]\)"}, Frame -> True, 
+        ImageSize -> 500, FrameLabel -> {
+          Style["\[Theta]input (\[Pi])", FontSize -> $CellContext`fontsize], 
+          Style["polarization overlap", FontSize -> $CellContext`fontsize]}, 
+        LabelStyle -> {FontSize -> $CellContext`fontsize}, TicksStyle -> 
+        Directive[FontSize -> $CellContext`fontsize], 
+        BaseStyle -> {FontSize -> $CellContext`fontsize}], 
+      "Specifications" :> {{{$CellContext`\[Theta]hwp$$, 0, 
+          Style["\[Theta]_hwp (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Theta]qwp$$, 0, 
+          Style["\[Theta]_qwp (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Theta]fiber$$, 0, 
+          Style["\[Theta]_fiber (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Eta]fiber$$, 0, 
+          Style["\[Eta]_fiber (\[Pi])", FontSize -> 20]}, 0, 2, Appearance -> 
+         "Labeled", LabelStyle -> {FontSize -> 20}}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      657.5802734374998, {256.0023921059852, 261.7343256997352}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.970805003772377*^9, {3.9708050614058447`*^9, 3.9708050899805183`*^9}, {
+   3.9708051773235693`*^9, 3.970805186735005*^9}, 3.9708052310399237`*^9, {
+   3.9708063476371393`*^9, 3.9708063650711403`*^9}, {3.970806416732662*^9, 
+   3.9708064216733503`*^9}, 3.970829297022272*^9, 3.970889153520586*^9, 
+   3.970906670869959*^9, {3.970907607641556*^9, 3.970907631955286*^9}, {
+   3.970907666919942*^9, 3.970907683880361*^9}, {3.9709077400030622`*^9, 
+   3.97090775777347*^9}, {3.970907874677916*^9, 3.9709079191905193`*^9}, {
+   3.970907977024849*^9, 3.970907997630328*^9}, 3.9714160890525303`*^9, 
+   3.971491020706295*^9},
+ CellLabel->"Out[61]=",ExpressionUUID->"aef23e11-ab81-46f5-bd78-02eae04e0575"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Including arbitrary rotations in the waveguide
+
+Definition of polarization through the \
+\[OpenCurlyQuote]Polarizer-HWP-QWP-fiber-Defect\[CloseCurlyQuote] system, \
+taking into account reflections. We define three polarizations:
+- Polarization of the excitation light at the defect
+- Polarization of the reflected excitation light just before the polarizer
+- Polarization of the emitted light by the defect just before the polarizer\
+\>", "Section",
+ CellChangeTimes->{{3.9714161411257687`*^9, 
+  3.971416178972773*^9}},ExpressionUUID->"35876574-48b4-4f37-83b0-\
+374ac2bb21cb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExcFiberWave", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_", ",", "\[Theta]wave_", ",", 
+     "\[Eta]wave_"}], "]"}], " ", "=", 
+   RowBox[{
+    RowBox[{"Jgen", "[", 
+     RowBox[{"\[Theta]wave", ",", "\[Eta]wave"}], "]"}], ".", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{"\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", "\[Theta]qwp", "]"}], ".", 
+    RowBox[{"Jhwp", "[", "\[Theta]hwp", "]"}], ".", 
+    RowBox[{"InputPol", "[", "\[Theta]input", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolExcRefFiberWave", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], " ", "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], ".", " ", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]fiber"}], ",", "\[Eta]fiber"}], "]"}], ".", 
+    "Jref", ".", " ", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{"\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", "\[Theta]qwp", "]"}], ".", 
+    RowBox[{"Jhwp", "[", "\[Theta]hwp", "]"}], ".", 
+    RowBox[{"InputPol", "[", "\[Theta]input", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PolEmiFiberWave", "[", 
+    RowBox[{
+    "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", "\[Theta]fiber_", ",", 
+     "\[Eta]fiber_", ",", "\[Theta]wave_", ",", "\[Eta]wave_"}], "]"}], " ", 
+   "=", "  ", 
+   RowBox[{
+    RowBox[{"Jhwp", "[", 
+     RowBox[{"-", "\[Theta]hwp"}], "]"}], ".", 
+    RowBox[{"Jqwp", "[", 
+     RowBox[{"-", "\[Theta]qwp"}], "]"}], ".", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]fiber"}], ",", "\[Eta]fiber"}], "]"}], ".", 
+    RowBox[{"Jgen", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]wave"}], ",", "\[Eta]wave"}], "]"}], ".", "Jref", 
+    ".", " ", "DefectPol"}]}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.970907891215973*^9, {3.971416192707418*^9, 3.971416255235009*^9}, {
+   3.971416286727103*^9, 3.971416292553323*^9}, {3.971416338610375*^9, 
+   3.9714163871227407`*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"e8d95dfc-34a4-4a9c-9cb0-8d8e609a20a0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculate polarization overlap/projection of:
+- Excitation light at the defect position with the defect
+- Reflected excitation light at the polarizer with the polarizer
+- Emitted defect light at the polarizer with the polarizer
+We take the angle of the polarizer the same as the angle of the input \
+polarization (which makes sense)\
+\>", "Section",
+ CellChangeTimes->{{3.970299424138831*^9, 3.970299521415463*^9}, {
+  3.970299876673645*^9, 
+  3.97029989850532*^9}},ExpressionUUID->"306da99f-e081-4aca-8180-\
+9d4540e8b680"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcFiberWaveDef", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_", ",", "\[Theta]wave_", ",", 
+     "\[Eta]wave_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{"DefectPol", ".", 
+      RowBox[{"PolExcFiberWave", "[", 
+       RowBox[{
+       "\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp", ",", 
+        "\[Theta]fiber", ",", "\[Eta]fiber", ",", "\[Theta]wave", ",", 
+        "\[Eta]wave"}], "]"}]}], "]"}], "2"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjExcRefFiberWavePol", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolExcRefFiberWave", "[", 
+       RowBox[{
+       "\[Theta]input", ",", "\[Theta]hwp", ",", "\[Theta]qwp", ",", 
+        "\[Theta]fiber", ",", "\[Eta]fiber"}], "]"}]}], "]"}], "2"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ProjEmiFiberWaveDef", "[", 
+    RowBox[{
+    "\[Theta]input_", ",", "\[Theta]hwp_", ",", "\[Theta]qwp_", ",", 
+     "\[Theta]fiber_", ",", "\[Eta]fiber_", ",", "\[Theta]wave_", ",", 
+     "\[Eta]wave_"}], "]"}], "=", 
+   SuperscriptBox[
+    RowBox[{"Norm", "[", 
+     RowBox[{
+      RowBox[{"Polarizer", "[", 
+       RowBox[{"-", "\[Theta]input"}], "]"}], ".", 
+      RowBox[{"PolEmiFiberWave", "[", 
+       RowBox[{
+       "\[Theta]hwp", ",", "\[Theta]qwp", ",", "\[Theta]fiber", ",", 
+        "\[Eta]fiber", ",", "\[Theta]wave", ",", "\[Eta]wave"}], "]"}]}], 
+     "]"}], "2"]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970299523951239*^9, 3.97029952920584*^9}, {
+  3.970299600344474*^9, 3.97029967330335*^9}, {3.970299705376305*^9, 
+  3.970299749776194*^9}, {3.970299798879364*^9, 3.9702998001871977`*^9}, {
+  3.970299847641366*^9, 3.9702998701695232`*^9}, {3.970300047492362*^9, 
+  3.97030007843548*^9}, {3.9703001895787582`*^9, 3.970300195065648*^9}, {
+  3.970301708128212*^9, 3.970301767784985*^9}, {3.970301985121194*^9, 
+  3.970301990340048*^9}, {3.970304133166533*^9, 3.970304147963997*^9}, {
+  3.970804839741033*^9, 3.970804871998551*^9}, {3.9708049101434107`*^9, 
+  3.970804914968155*^9}, {3.970805022014434*^9, 3.9708050449110603`*^9}, {
+  3.970805078245871*^9, 3.970805086920087*^9}, {3.971416406723871*^9, 
+  3.971416469353125*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"2573dab4-2baa-4f68-858c-5de35b08997e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"fontsize", " ", "=", " ", "20"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ProjExcFiberWaveDef", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Eta]fiber", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]wave", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Eta]wave", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{"ProjExcRefFiberWavePol", "[", 
+        RowBox[{
+         RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+         RowBox[{"\[Eta]fiber", "*", "\[Pi]"}]}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "*", 
+        RowBox[{"ProjExcFiberWaveDef", "[", 
+         RowBox[{
+          RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]hwp", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]qwp", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]fiber", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Eta]fiber", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Theta]wave", "*", "\[Pi]"}], ",", 
+          RowBox[{"\[Eta]wave", "*", "\[Pi]"}]}], "]"}]}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Theta]input", ",", "0", ",", "1"}], "}"}], ",", 
+     RowBox[{"PlotRange", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], ",", 
+     RowBox[{"PlotLegends", "->", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(excite\)]\)\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(suppress\)]\)\>\"", ",", 
+        "\"\<\!\(\*SubscriptBox[\(\[Nu]\), \(emission\)]\)\>\""}], "}"}]}], 
+     ",", " ", 
+     RowBox[{"Frame", "->", " ", "True"}], ",", " ", 
+     RowBox[{"ImageSize", "->", "500"}], ",", 
+     RowBox[{"FrameLabel", "->", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<\[Theta]input (\[Pi])\>\"", ",", 
+          RowBox[{"FontSize", "->", "fontsize"}]}], "]"}], ",", 
+        RowBox[{"Style", "[", 
+         RowBox[{"\"\<polarization overlap\>\"", ",", 
+          RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}], ",", 
+     RowBox[{"TicksStyle", "->", 
+      RowBox[{"Directive", "[", 
+       RowBox[{"FontSize", "->", "fontsize"}], "]"}]}], ",", 
+     RowBox[{"BaseStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]hwp", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_hwp (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]qwp", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_qwp (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]fiber", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_fiber (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Eta]fiber", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Eta]_fiber (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "2", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Theta]wave", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Theta]_wave (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "1", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Eta]wave", ",", "0", ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<\[Eta]_wave (\[Pi])\>\"", ",", 
+         RowBox[{"FontSize", "->", "fontsize"}]}], "]"}]}], "}"}], ",", "0", 
+     ",", "2", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}], ",", 
+     RowBox[{"LabelStyle", "->", 
+      RowBox[{"{", 
+       RowBox[{"FontSize", "->", "fontsize"}], "}"}]}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.9714165066726303`*^9, 3.971416561195026*^9}, {
+  3.971492821962368*^9, 3.9714928249784813`*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"856f5e91-5e9f-4c3b-9352-7d9c775c56a8"],
+
+Cell[BoxData["20"], "Output",
+ CellChangeTimes->{3.971416561844418*^9, 3.971491029116912*^9, 
+  3.9714928259352503`*^9},
+ CellLabel->"Out[70]=",ExpressionUUID->"b14fb275-9033-47de-b3d7-4ab0308aaa64"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Eta]fiber$$ = 
+    0.555, $CellContext`\[Eta]wave$$ = 0.545, $CellContext`\[Theta]fiber$$ = 
+    0.5740000000000001, $CellContext`\[Theta]hwp$$ = 
+    0., $CellContext`\[Theta]qwp$$ = 0.332, $CellContext`\[Theta]wave$$ = 
+    0.764, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Theta]hwp$$], 0, 
+       Style["\[Theta]_hwp (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]qwp$$], 0, 
+       Style["\[Theta]_qwp (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]fiber$$], 0, 
+       Style["\[Theta]_fiber (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Eta]fiber$$], 0, 
+       Style["\[Eta]_fiber (\[Pi])", FontSize -> 20]}, 0, 2, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Theta]wave$$], 0, 
+       Style["\[Theta]_wave (\[Pi])", FontSize -> 20]}, 0, 1, ControlType -> 
+      Manipulator}, {{
+       Hold[$CellContext`\[Eta]wave$$], 0, 
+       Style["\[Eta]_wave (\[Pi])", FontSize -> 20]}, 0, 2, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {
+    614.4802734374999, {160.40169325344618`, 166.13362684719613`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Eta]fiber$$ = 
+        0, $CellContext`\[Eta]wave$$ = 0, $CellContext`\[Theta]fiber$$ = 
+        0, $CellContext`\[Theta]hwp$$ = 0, $CellContext`\[Theta]qwp$$ = 
+        0, $CellContext`\[Theta]wave$$ = 0}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> Plot[{
+         $CellContext`ProjExcFiberWaveDef[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+          Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ 
+          Pi, $CellContext`\[Theta]wave$$ Pi, $CellContext`\[Eta]wave$$ Pi], 
+         $CellContext`ProjExcRefFiberWavePol[$CellContext`\[Theta]input 
+          Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+          Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ 
+          Pi], -$CellContext`ProjExcFiberWaveDef[$CellContext`\[Theta]input 
+           Pi, $CellContext`\[Theta]hwp$$ Pi, $CellContext`\[Theta]qwp$$ 
+           Pi, $CellContext`\[Theta]fiber$$ Pi, $CellContext`\[Eta]fiber$$ 
+           Pi, $CellContext`\[Theta]wave$$ Pi, $CellContext`\[Eta]wave$$ 
+           Pi]}, {$CellContext`\[Theta]input, 0, 1}, PlotRange -> {-1, 1}, 
+        PlotLegends -> {
+         "\!\(\*SubscriptBox[\(\[Nu]\), \(excite\)]\)", 
+          "\!\(\*SubscriptBox[\(\[Nu]\), \(suppress\)]\)", 
+          "\!\(\*SubscriptBox[\(\[Nu]\), \(emission\)]\)"}, Frame -> True, 
+        ImageSize -> 500, FrameLabel -> {
+          Style["\[Theta]input (\[Pi])", FontSize -> $CellContext`fontsize], 
+          Style["polarization overlap", FontSize -> $CellContext`fontsize]}, 
+        LabelStyle -> {FontSize -> $CellContext`fontsize}, TicksStyle -> 
+        Directive[FontSize -> $CellContext`fontsize], 
+        BaseStyle -> {FontSize -> $CellContext`fontsize}], 
+      "Specifications" :> {{{$CellContext`\[Theta]hwp$$, 0, 
+          Style["\[Theta]_hwp (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Theta]qwp$$, 0, 
+          Style["\[Theta]_qwp (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Theta]fiber$$, 0, 
+          Style["\[Theta]_fiber (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Eta]fiber$$, 0, 
+          Style["\[Eta]_fiber (\[Pi])", FontSize -> 20]}, 0, 2, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Theta]wave$$, 0, 
+          Style["\[Theta]_wave (\[Pi])", FontSize -> 20]}, 0, 1, Appearance -> 
+         "Labeled", 
+         LabelStyle -> {FontSize -> 20}}, {{$CellContext`\[Eta]wave$$, 0, 
+          Style["\[Eta]_wave (\[Pi])", FontSize -> 20]}, 0, 2, Appearance -> 
+         "Labeled", LabelStyle -> {FontSize -> 20}}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      657.5802734374998, {288.86752882473525`, 294.59946241848525`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.971416561844418*^9, 3.971491029116912*^9, 
+  3.971492825949375*^9},
+ CellLabel->"Out[71]=",ExpressionUUID->"e5a095d4-904c-4579-aa7f-6098c3270af4"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Open questions on arbitrary polarization
+
+
+Question: Is J1(\[Theta]1,\[Eta]1).J2(\[Theta]2,\[Eta]2) the same \
+mathematical form as J(\[Theta]eff,\[Eta]eff), and thus \[Theta]eff = f(\
+\[Theta]1,\[Theta]2) and \[Eta](eff) = g(\[Eta]1,\[Eta]2)?
+Answer: No answer yet. Expectation: yes, if the general Jones matrix \
+describes an arbitrary unitary, the product of two Jones matrices is also a \
+unitary. Caveat: I\[CloseCurlyQuote]ve hard set the circularity of the Jones \
+matrix to 0, which might compromise the above. Although I don\
+\[CloseCurlyQuote]t think so if for all the element the circularity is zero \
+(so the polarization elements have eigenvectors that are linearly polarized, \
+rather than circularly polarized)\
+\>", "Section",
+ CellChangeTimes->{{3.970711622145623*^9, 3.970711634313609*^9}, {
+  3.9708034571386757`*^9, 3.970803567832314*^9}, {3.970803680794917*^9, 
+  3.970803686106564*^9}, {3.9708037545577517`*^9, 3.9708038791456423`*^9}, {
+  3.9708042791555967`*^9, 
+  3.970804284723652*^9}},ExpressionUUID->"bcb26446-d45e-400a-b5db-\
+18e0bd85a274"],
+
+Cell["\<\
+Definition of polarization matrices. General non-circular phase retardation \
+Jones matrix (J), Jones matrix for phase retardation of element 1 (J1), Jones \
+matrix of phase retardation element 2 (J2), Jones matrix for a pass through \
+first element 1 and then element 2 (Jforward), Jones matrix for passing back \
+through element 2 and then element 1 after a reflection (Jbackward). \
+\>", "Text",
+ CellChangeTimes->{{3.970718544420217*^9, 
+  3.970718689885817*^9}},ExpressionUUID->"bbb583ca-3f89-4bfa-b629-\
+2e4dd05f916b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"J", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", 
+      FractionBox["\[Eta]", "2"]}], "]"}], 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{"Exp", "[", 
+           RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}], " ", 
+          SuperscriptBox[
+           RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"]}]}], ",", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"Exp", "[", 
+            RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}]}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           RowBox[{"Exp", "[", 
+            RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}]}], ")"}], 
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+         RowBox[{"Cos", "[", "\[Theta]", "]"}]}], ",", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], "+", 
+         RowBox[{
+          RowBox[{"Exp", "[", 
+           RowBox[{"\[ImaginaryI]", " ", "\[Eta]"}], "]"}], " ", 
+          SuperscriptBox[
+           RowBox[{"Cos", "[", "\[Theta]", "]"}], "2"]}]}]}], "}"}]}], 
+     "}"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"J1", "[", 
+    RowBox[{"\[Theta]1_", ",", "\[Eta]1_"}], "]"}], " ", "=", " ", 
+   RowBox[{"J", "[", 
+    RowBox[{"\[Theta]1", ",", "\[Eta]1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"J2", "[", 
+    RowBox[{"\[Theta]2_", ",", "\[Eta]2_"}], "]"}], " ", "=", " ", 
+   RowBox[{"J", "[", 
+    RowBox[{"\[Theta]2", ",", "\[Eta]2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jforward", "[", 
+    RowBox[{
+    "\[Theta]1_", ",", "\[Eta]1_", ",", "\[Theta]2_", ",", "\[Eta]2_"}], 
+    "]"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"J2", "[", 
+      RowBox[{"\[Theta]2", ",", "\[Eta]2"}], "]"}], ".", 
+     RowBox[{"J1", "[", 
+      RowBox[{"\[Theta]1", ",", "\[Eta]1"}], "]"}]}], "//", 
+    "FullSimplify"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Jbackward", "[", 
+    RowBox[{
+    "\[Theta]1_", ",", "\[Eta]1_", ",", "\[Theta]2_", ",", "\[Eta]2_"}], 
+    "]"}], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"J1", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Theta]1"}], ",", "\[Eta]1"}], "]"}], ".", 
+     RowBox[{"J2", "[", 
+      RowBox[{
+       RowBox[{"-", "\[Theta]2"}], ",", "\[Eta]2"}], "]"}]}], "//", 
+    "FullSimplify"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970711853586514*^9, 3.970711965466753*^9}, {
+  3.970712031410838*^9, 3.970712103745713*^9}, {3.970712163278542*^9, 
+  3.970712265303133*^9}, {3.970712317446417*^9, 3.9707123188362303`*^9}, {
+  3.970712675220787*^9, 3.970712704540234*^9}, {3.970712749945209*^9, 
+  3.9707127710952578`*^9}, {3.9707174826114693`*^9, 3.9707174839428043`*^9}, {
+  3.970718525266466*^9, 3.9707185277463703`*^9}},
+ CellLabel->"In[22]:=",ExpressionUUID->"f86ee18a-f19c-4953-8d11-d6f2ad086293"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.9708026257218943`*^9, 
+  3.970802625916019*^9}},ExpressionUUID->"5350c9ce-2be3-4a85-9272-\
+15fa584fcc44"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Forward pass + reflection + backwards reflection 
+- Question: If you pass through a polarization element with an arbitrary \
+angle and retardation, reflect and pass back through that same element, can \
+the total effect of this be described by the same Jones matrix as the \
+polarization element, but with double the retardation? 
+- Answer: Yes (note, for sticking to the same reference frame of forward \
+propagating light, I\[CloseCurlyQuote]ve included another reflection after \
+the backwards pass.\
+\>", "Section",
+ CellChangeTimes->{{3.970803577572708*^9, 
+  3.970803748509197*^9}},ExpressionUUID->"311ed0ff-bb66-46d4-b584-\
+4620df96692c"],
+
+Cell["\<\
+Investigating whether a forward pass + reflection + backwards pass through a \
+polarization element with a general angle and phase retardation can be \
+described by a combined single general Jones matrix of the same form as the \
+Jones matrix of the component itself \[LineSeparator]
+Answer: Yes, as seen from the manipulate plot, for an arbitrary angle \
+\[Theta] and arbitrary phase \[Eta], the reflection matrix and the \
+combination matrix are the same. Note that here this is only shown for the \
+[[1,1]] element of the matrices, but I\[CloseCurlyQuote]ve checked this as \
+well for the three other matrix elements.\
+\>", "Text",
+ CellChangeTimes->{{3.9707187084187393`*^9, 3.9707187776263933`*^9}, {
+  3.970719224128868*^9, 3.970719259398684*^9}, {3.9707194286001587`*^9, 
+  3.970719459878559*^9}},ExpressionUUID->"dd1c472f-c2ad-4a0d-859c-\
+407cb0e018b3"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"reflMat", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], " ", "=", 
+   RowBox[{"Jref", ".", 
+    RowBox[{"J", "[", 
+     RowBox[{
+      RowBox[{"-", "\[Theta]"}], ",", "\[Eta]"}], "]"}], ".", "Jref", ".", 
+    RowBox[{"J", "[", 
+     RowBox[{"\[Theta]", ",", "\[Eta]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"combMat", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], " ", "=", " ", 
+   RowBox[{"J", "[", 
+    RowBox[{"\[Theta]", ",", 
+     RowBox[{"2", "\[Eta]"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.970717571599025*^9, 3.970717715650702*^9}, {
+  3.970717746674136*^9, 3.970717748364312*^9}, {3.970718232419815*^9, 
+  3.9707182342246733`*^9}, {3.970718513271276*^9, 3.97071851389075*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"fc8af733-35ee-4a96-aaef-0dc04e74ed7e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"refMatEl", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"reflMat", "[", 
+     RowBox[{"\[Theta]", ",", "\[Eta]"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"combMatEl", "[", 
+    RowBox[{"\[Theta]_", ",", "\[Eta]_"}], "]"}], "=", 
+   RowBox[{
+    RowBox[{"combMat", "[", 
+     RowBox[{"\[Theta]", ",", "\[Eta]"}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Grid", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Re", "[", 
+            RowBox[{"refMatEl", "[", 
+             RowBox[{
+              RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+              RowBox[{"\[Eta]", "*", "\[Pi]"}]}], "]"}], "]"}], ",", 
+           RowBox[{"Re", "[", 
+            RowBox[{"combMatEl", "[", 
+             RowBox[{
+              RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+              RowBox[{"\[Eta]", "*", "\[Pi]"}]}], "]"}], "]"}]}], "}"}], ",", 
+         
+         RowBox[{"{", 
+          RowBox[{"\[Theta]input", ",", "0", ",", "2"}], "}"}], ",", 
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], ",", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<reflection\>\"", ",", "\"\<combination\>\""}], 
+           "}"}]}], ",", " ", 
+         RowBox[{"Frame", "->", " ", "True"}], ",", " ", 
+         RowBox[{"ImageSize", "->", "500"}], ",", 
+         RowBox[{"FrameLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<\[Theta]input (\[Pi])\>\"", ",", "\"\<Real part\>\""}], 
+           "}"}]}]}], "\[IndentingNewLine]", "]"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Im", "[", 
+            RowBox[{"refMatEl", "[", 
+             RowBox[{
+              RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+              RowBox[{"\[Eta]", "*", "\[Pi]"}]}], "]"}], "]"}], ",", 
+           RowBox[{"Im", "[", 
+            RowBox[{"combMatEl", "[", 
+             RowBox[{
+              RowBox[{"\[Theta]input", "*", "\[Pi]"}], ",", 
+              RowBox[{"\[Eta]", "*", "\[Pi]"}]}], "]"}], "]"}]}], "}"}], ",", 
+         
+         RowBox[{"{", 
+          RowBox[{"\[Theta]input", ",", "0", ",", "2"}], "}"}], ",", 
+         RowBox[{"PlotRange", "->", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"-", "1.1"}], ",", "1.1"}], "}"}]}], ",", 
+         RowBox[{"PlotLegends", "->", 
+          RowBox[{"{", 
+           RowBox[{"\"\<reflection\>\"", ",", "\"\<combination\>\""}], 
+           "}"}]}], ",", " ", 
+         RowBox[{"Frame", "->", " ", "True"}], ",", " ", 
+         RowBox[{"ImageSize", "->", "500"}], ",", 
+         RowBox[{"FrameLabel", "->", 
+          RowBox[{"{", 
+           RowBox[{
+           "\"\<\[Theta]input (\[Pi])\>\"", ",", "\"\<Imaginary part\>\""}], 
+           "}"}]}]}], "]"}], "}"}]}], "}"}], "\[IndentingNewLine]", "]"}], 
+   ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Eta]", ",", "0", ",", "\"\<\[Eta]\>\""}], "}"}], ",", "0", 
+     ",", "2", ",", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}]}], "}"}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.970717775626649*^9, 3.9707178050616283`*^9}, {
+  3.970717838040126*^9, 3.9707180610563307`*^9}, {3.970718828550209*^9, 
+  3.9707188848878202`*^9}, {3.970718937565309*^9, 3.9707192020365973`*^9}, {
+  3.9707192668201437`*^9, 3.970719309606619*^9}, {3.970719416193676*^9, 
+  3.97071941881036*^9}, {3.9707194801612797`*^9, 3.970719494738172*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"14ff78c2-631a-4697-a49c-809487fa576e"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Eta]$$ = 0, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`\[Eta]$$], 0, "\[Eta]"}, 0, 2, ControlType -> 
+      Manipulator}}, Typeset`size$$ = {
+    611.7971679687499, {315.7140678113331, 321.4460014050831}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`\[Eta]$$ = 0}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> Grid[{{
+          Plot[{
+            Re[
+             $CellContext`refMatEl[$CellContext`\[Theta]input 
+              Pi, $CellContext`\[Eta]$$ Pi]], 
+            Re[
+             $CellContext`combMatEl[$CellContext`\[Theta]input 
+              Pi, $CellContext`\[Eta]$$ Pi]]}, {$CellContext`\[Theta]input, 0,
+             2}, PlotRange -> {-1.1, 1.1}, 
+           PlotLegends -> {"reflection", "combination"}, Frame -> True, 
+           ImageSize -> 500, 
+           FrameLabel -> {"\[Theta]input (\[Pi])", "Real part"}]}, {
+          Plot[{
+            Im[
+             $CellContext`refMatEl[$CellContext`\[Theta]input 
+              Pi, $CellContext`\[Eta]$$ Pi]], 
+            Im[
+             $CellContext`combMatEl[$CellContext`\[Theta]input 
+              Pi, $CellContext`\[Eta]$$ Pi]]}, {$CellContext`\[Theta]input, 0,
+             2}, PlotRange -> {-1.1, 1.1}, 
+           PlotLegends -> {"reflection", "combination"}, Frame -> True, 
+           ImageSize -> 500, 
+           FrameLabel -> {"\[Theta]input (\[Pi])", "Imaginary part"}]}}], 
+      "Specifications" :> {{{$CellContext`\[Eta]$$, 0, "\[Eta]"}, 0, 2, 
+         Appearance -> "Labeled"}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{
+      654.8971679687498, {358.8844932263722, 364.6164268201222}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.970718009922483*^9, 3.970718029063237*^9}, 
+   3.970718061543557*^9, 3.970718238130747*^9, 3.970718886616908*^9, {
+   3.9707191017311487`*^9, 3.970719202745802*^9}, {3.970719267517362*^9, 
+   3.970719310335786*^9}, 3.970719388597019*^9, 3.97071941957108*^9, {
+   3.970719487048224*^9, 3.970719495155661*^9}, {3.9708073438670883`*^9, 
+   3.970807367170824*^9}, 3.971416113028529*^9},
+ CellLabel->"Out[31]=",ExpressionUUID->"398d00c1-1932-4f46-9c28-876295365626"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.1 for Mac OS X ARM (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"185a6a7a-4b08-41da-a69d-7e87f3f0a7c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 184, 3, 66, "Section",ExpressionUUID->"3de39ec3-0ef4-4790-b447-2a2d82428514"],
+Cell[763, 27, 5723, 161, 193, "Input",ExpressionUUID->"f00f3842-8832-4c0d-95ec-bd947e2ea7e2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6523, 193, 582, 11, 177, "Section",ExpressionUUID->"e80e6496-e26d-495a-9e9c-83b4eda401bb"],
+Cell[7108, 206, 1785, 41, 70, "Input",ExpressionUUID->"c8860a38-b6b9-46d4-a6d8-2bf397844948"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8930, 252, 581, 11, 214, "Section",ExpressionUUID->"228cb947-f6ae-4ea7-bb21-cac0ccaf8f06"],
+Cell[9514, 265, 1958, 47, 70, "Input",ExpressionUUID->"f5306c7f-1bcc-42f9-829c-89ff7c87e43b"],
+Cell[CellGroupData[{
+Cell[11497, 316, 2812, 63, 70, "Input",ExpressionUUID->"f48ee216-4ebf-4171-9e44-316ffbbcd34b"],
+Cell[14312, 381, 3664, 65, 451, "Output",ExpressionUUID->"7887e3dc-1dd2-4e82-bdc8-421353016142"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18025, 452, 647, 13, 252, "Section",ExpressionUUID->"cd841bed-db01-460c-b1a8-cf5ffebb9621"],
+Cell[18675, 467, 2563, 59, 70, "Input",ExpressionUUID->"e4a698c1-32ce-4f78-a9ef-415495dd293c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21275, 531, 533, 11, 214, "Section",ExpressionUUID->"0bc1e110-a3c9-476d-961f-8b565ea43eb7"],
+Cell[21811, 544, 2399, 56, 70, "Input",ExpressionUUID->"4fb62616-b052-4b38-882c-f0f0e3407a28"],
+Cell[CellGroupData[{
+Cell[24235, 604, 5822, 129, 275, "Input",ExpressionUUID->"68e39c6d-2acb-427e-b5f7-ed666b3a325e"],
+Cell[30060, 735, 750, 11, 33, "Output",ExpressionUUID->"1026d118-d306-4c2e-a85b-dda4fd65f99a"],
+Cell[30813, 748, 5145, 90, 534, "Output",ExpressionUUID->"aef23e11-ab81-46f5-bd78-02eae04e0575"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36007, 844, 587, 12, 252, "Section",ExpressionUUID->"35876574-48b4-4f37-83b0-374ac2bb21cb"],
+Cell[36597, 858, 2403, 61, 70, "Input",ExpressionUUID->"e8d95dfc-34a4-4a9c-9cb0-8d8e609a20a0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39037, 924, 533, 11, 214, "Section",ExpressionUUID->"306da99f-e081-4aca-8180-9d4540e8b680"],
+Cell[39573, 937, 2663, 61, 70, "Input",ExpressionUUID->"2573dab4-2baa-4f68-858c-5de35b08997e"],
+Cell[CellGroupData[{
+Cell[42261, 1002, 6081, 145, 315, "Input",ExpressionUUID->"856f5e91-5e9f-4c3b-9352-7d9c775c56a8"],
+Cell[48345, 1149, 199, 3, 33, "Output",ExpressionUUID->"b14fb275-9033-47de-b3d7-4ab0308aaa64"],
+Cell[48547, 1154, 5573, 98, 600, "Output",ExpressionUUID->"e5a095d4-904c-4579-aa7f-6098c3270af4"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54169, 1258, 1079, 20, 289, "Section",ExpressionUUID->"bcb26446-d45e-400a-b5db-18e0bd85a274"],
+Cell[55251, 1280, 534, 9, 55, "Text",ExpressionUUID->"bbb583ca-3f89-4bfa-b629-2e4dd05f916b"],
+Cell[55788, 1291, 3364, 95, 123, "Input",ExpressionUUID->"f86ee18a-f19c-4953-8d11-d6f2ad086293"],
+Cell[59155, 1388, 208, 4, 70, "Input",ExpressionUUID->"5350c9ce-2be3-4a85-9272-15fa584fcc44"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59400, 1397, 655, 12, 214, "Section",ExpressionUUID->"311ed0ff-bb66-46d4-b584-4620df96692c"],
+Cell[60058, 1411, 871, 14, 121, "Text",ExpressionUUID->"dd1c472f-c2ad-4a0d-859c-407cb0e018b3"],
+Cell[60932, 1427, 888, 22, 49, "Input",ExpressionUUID->"fc8af733-35ee-4a96-aaef-0dc04e74ed7e"],
+Cell[CellGroupData[{
+Cell[61845, 1453, 4171, 104, 274, "Input",ExpressionUUID->"14ff78c2-631a-4697-a49c-809487fa576e"],
+Cell[66019, 1559, 3260, 63, 740, "Output",ExpressionUUID->"398d00c1-1932-4f46-9c28-876295365626"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
